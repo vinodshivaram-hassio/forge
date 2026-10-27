@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: test-writer
+version: 1
+role: Turn acceptance criteria into failing tests named with their criterion id.
+runner: llm
+instructions_file: agents/test-writer.md
+accepts: [test-spec]
+select: {tags_any: []}
+produces: []
+may_edit_sections: []
+verdicts: [written]
+input_schema: schemas/agent-input.json
+output_schema: schemas/test-spec-output.json
+model: {tier_min: 3, tier_max: 8, floor: null}
+tools: [read_file, search_repo, write_tests]
+limits: {max_attempts: 3, max_cost_units: 4, timeout_s: 600}
+notes: "write_tests is scoped to config forge.yaml paths.tests."

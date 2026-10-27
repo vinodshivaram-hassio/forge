@@ -1,0 +1,16 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: reviewer-size
+version: 1
+role: Judge the Size gate only.
+runner: llm
+instructions_file: agents/reviewer-size.md
+accepts: [review]
+select: {tags_any: []}
+produces: []
+may_edit_sections: [Review Flags]
+verdicts: [pass, fail, cannot-assess]
+input_schema: schemas/agent-input.json
+output_schema: schemas/review-output.json
+model: {tier_min: 4, tier_max: 8, floor: 4}
+tools: [read_file, search_repo]
+limits: {max_attempts: 3, max_cost_units: 2, timeout_s: 600}

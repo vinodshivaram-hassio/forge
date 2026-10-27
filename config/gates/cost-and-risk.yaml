@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: cost-and-risk
+version: 1
+owner_agent: reviewer-cost
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full]
+pass_criteria:
+  - id: CR1
+    text: "Estimated cost units fit within the remaining root ceiling."
+  - id: CR2
+    text: "Blast radius (modules touched) is stated."
+cannot_assess_when: "No cost ceiling is configured for the root."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: advisory
+examples:
+  good: [gates/cost-and-risk/good/*.md]
+  bad: [gates/cost-and-risk/bad/*.md]

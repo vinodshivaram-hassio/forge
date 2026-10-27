@@ -1,0 +1,19 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: security-and-data
+version: 1
+owner_agent: reviewer-security
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full]
+pass_criteria:
+  - id: SD1
+    text: "Facts state whether secrets, personal data or permissions are touched."
+  - id: SD2
+    text: "If any are, a Constraint and an AC cover their handling."
+  - id: SD3
+    text: "No secret value appears in the context file or artifacts."
+cannot_assess_when: "The data the change touches is not described in Facts."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/security-and-data/good/*.md]
+  bad: [gates/security-and-data/bad/*.md]

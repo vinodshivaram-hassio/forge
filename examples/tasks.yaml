@@ -1,0 +1,102 @@
+# Excerpt of <store.path>/tasks.yaml from walkthrough A, just after trace seq 20
+# (T-0004 verified; T-0005 not started). Canonical form per DR-003. Proposed 2026-10-27.
+
+- id: T-0001
+  type: intake
+  title: Make uploads reliable on flaky networks
+  parent_id: none
+  root_id: T-0001
+  children: [T-0002, T-0003, T-0004, T-0005]
+  status: decomposed
+  stage: present
+  priority: 2
+  complexity: 3
+  tags: [backend]
+  owner: orchestrator
+  claim: null
+  counters: {clarify: 2, review_rounds: 1, attempts: 0}
+  blocked: null
+  context_ref: tasks/T-0001/context.md
+  context_version: 3
+  trace_ref: tasks/T-0001/trace.jsonl
+  last_trace_seq: 14
+  result_ref: tasks/T-0001/results/0014-decomposer.json
+  cost: {units: 5.1, tokens: 70412}
+  created_at: "2026-10-27T13:30:00Z"
+  updated_at: "2026-10-27T14:05:40Z"
+  version: 18
+
+- id: T-0004
+  type: implement
+  title: Retry transient upload failures with exponential backoff
+  parent_id: T-0001
+  root_id: T-0001
+  children: [T-0006, T-0007, T-0008]
+  status: done
+  stage: build
+  priority: 2
+  complexity: 2
+  tags: [backend]
+  owner: implementer-backend
+  claim: null
+  counters: {clarify: 1, review_rounds: 1, attempts: 1}
+  blocked: null
+  context_ref: tasks/T-0004/context.md
+  context_version: 2
+  trace_ref: tasks/T-0004/trace.jsonl
+  last_trace_seq: 6
+  result_ref: tasks/T-0004/results/0005-implementer-backend.json
+  cost: {units: 2.4, tokens: 41210}
+  created_at: "2026-10-27T14:05:40Z"
+  updated_at: "2026-10-27T14:21:09Z"
+  version: 11
+
+- id: T-0007
+  type: verify
+  title: Red check for T-0004
+  parent_id: T-0004
+  root_id: T-0001
+  children: []
+  status: done
+  stage: build
+  priority: 2
+  complexity: 2
+  tags: [backend]
+  owner: verifier
+  claim: null
+  counters: {clarify: 0, review_rounds: 0, attempts: 1}
+  blocked: null
+  context_ref: tasks/T-0007/context.md
+  context_version: 1
+  trace_ref: tasks/T-0007/trace.jsonl
+  last_trace_seq: 2
+  result_ref: tasks/T-0007/results/0002-verifier.json
+  cost: {units: 0, tokens: 0}
+  created_at: "2026-10-27T14:12:30Z"
+  updated_at: "2026-10-27T14:13:02Z"
+  version: 4
+
+- id: T-0005
+  type: implement
+  title: Raise UploadFailed after the final attempt
+  parent_id: T-0001
+  root_id: T-0001
+  children: []
+  status: open
+  stage: load
+  priority: 2
+  complexity: 0
+  tags: [backend]
+  owner: intake
+  claim: null
+  counters: {clarify: 0, review_rounds: 0, attempts: 0}
+  blocked: null
+  context_ref: tasks/T-0005/context.md
+  context_version: 1
+  trace_ref: tasks/T-0005/trace.jsonl
+  last_trace_seq: 1
+  result_ref: null
+  cost: {units: 0, tokens: 0}
+  created_at: "2026-10-27T14:05:40Z"
+  updated_at: "2026-10-27T14:05:40Z"
+  version: 1

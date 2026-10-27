@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: researcher
+version: 1
+role: Fetch the missing information a clarify task asked for.
+runner: llm
+instructions_file: agents/researcher.md
+accepts: [fetch]
+select: {tags_any: []}
+produces: []
+may_edit_sections: []
+verdicts: [answered, not-found]
+input_schema: schemas/agent-input.json
+output_schema: schemas/fetch-output.json
+model: {tier_min: 2, tier_max: 6, floor: null}
+tools: [web_search, read_file, search_repo]
+limits: {max_attempts: 3, max_cost_units: 3, timeout_s: 600}
+notes: "Writes its own result only."

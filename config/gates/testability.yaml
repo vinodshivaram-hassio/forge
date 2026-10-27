@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: testability
+version: 1
+owner_agent: reviewer-testability
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full, child]
+pass_criteria:
+  - id: TG1
+    text: "Every acceptance criterion maps to at least one automatable test."
+  - id: TG2
+    text: "No criterion depends on subjective judgement, unless marked [check: human]."
+cannot_assess_when: "An AC references a system the reviewer cannot read."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/testability/good/*.md]
+  bad: [gates/testability/bad/*.md]

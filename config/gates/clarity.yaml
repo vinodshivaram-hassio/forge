@@ -1,0 +1,19 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: clarity
+version: 1
+owner_agent: reviewer-clarity
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full, child]
+pass_criteria:
+  - id: CL1
+    text: "No Goal, Fact, Constraint or AC admits two materially different implementations."
+  - id: CL2
+    text: "Every quantity has a unit."
+  - id: CL3
+    text: "Every term used in an AC is defined in Facts or is standard in the repo's language."
+cannot_assess_when: "A term in an AC refers to a document the reviewer cannot read."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/clarity/good/*.md]
+  bad: [gates/clarity/bad/*.md]

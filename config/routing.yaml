@@ -1,0 +1,14 @@
+# Status: proposed (2026-10-27). Tier to model class.
+# Changing provider or model version means editing this file only; no agent names a model.
+# Concrete model ids are set in execution design (open question 6).
+
+classes:
+  small: {tiers: [1, 2, 3], model: null}
+  mid:   {tiers: [4, 5, 6, 7], model: null}
+  large: {tiers: [8, 9, 10], model: null}
+
+# Order of precedence when choosing a tier for one agent on one task:
+#   1. model_override in the context file header
+#   2. agent floor (applied after the clamp)
+#   3. formula: tier = clamp(round(tier_min + w * (tier_max - tier_min)) + escalation, tier_min, tier_max)
+#      w = alpha * (dial - 1) / 9 + (1 - alpha) * (complexity - 1) / 4

@@ -1,0 +1,20 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: size
+version: 1
+owner_agent: reviewer-size
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full]
+pass_criteria:
+  - id: SZ1
+    text: "A task to be built has at most 3 ACs and complexity at most 2."
+  - id: SZ2
+    text: "A task to be decomposed can be split into at most 8 children."
+  - id: SZ3
+    text: "Depth stays at most 4."
+cannot_assess_when: "The modules to be changed are not named in Facts."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/size/good/*.md]
+  bad: [gates/size/bad/*.md]
+notes: "SZ1 limits (3 ACs, complexity 2) confirmed 2026-10-27."

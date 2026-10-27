@@ -1,0 +1,36 @@
+# Status: proposed (2026-10-27). Global Forge settings.
+
+store:
+  kind: file                 # TaskStore implementation; swap by config only
+  path: ./forge-store        # store.path from brief section 7
+  claim_ttl_s: 600           # claims expire after this; expire_claims releases them
+
+routing:
+  dial: 3                    # 1 = cheapest, 10 = best quality (DR-002)
+  alpha: 0.5                 # weight of the dial against task complexity
+  escalation_per_retry: 1
+  table: config/routing.yaml
+
+limits:                      # loop guards, brief section 15
+  clarify_per_task: 3
+  review_rounds_per_task: 3
+  max_depth: 4
+  max_children_per_parent: 8
+  cost_units_per_task: 15    # placeholder; set after the agent-runner spike
+  cost_units_per_root: 40    # placeholder; the figure used in walkthrough A
+  cost_advisory_at: 0.8      # advisory to the user at 80% of a ceiling
+
+review:
+  child_gates_from: run_on   # DR-001: gates whose run_on includes "child"
+  full_panel_if:
+    complexity_at_least: 4
+    new_facts_vs_parent: true
+
+paths:                       # tool scopes for write_tests and write_code
+  tests: [tests/]
+  agent_definitions: config/agents/
+  gate_definitions: config/gates/
+  lint_list: lint/vague-terms.txt
+
+workers:
+  mode: sequential           # open question 7; claims already support parallel

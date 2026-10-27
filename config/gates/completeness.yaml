@@ -1,0 +1,21 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: completeness
+version: 1
+owner_agent: reviewer-completeness
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full]
+pass_criteria:
+  - id: CO1
+    text: "Every part of the Goal is covered by at least one AC."
+  - id: CO2
+    text: "Every Constraint is referenced by an AC or a Decision."
+  - id: CO3
+    text: "No AC contradicts a Constraint or Out of Scope."
+  - id: CO4
+    text: "Out of Scope is not None when complexity is 3 or more."
+cannot_assess_when: "The Goal depends on a fact still marked unconfirmed."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/completeness/good/*.md]
+  bad: [gates/completeness/bad/*.md]

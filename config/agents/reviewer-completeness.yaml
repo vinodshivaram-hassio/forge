@@ -1,0 +1,16 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: reviewer-completeness
+version: 1
+role: Judge the Completeness gate only.
+runner: llm
+instructions_file: agents/reviewer-completeness.md
+accepts: [review]
+select: {tags_any: []}
+produces: []
+may_edit_sections: [Review Flags]
+verdicts: [pass, fail, cannot-assess]
+input_schema: schemas/agent-input.json
+output_schema: schemas/review-output.json
+model: {tier_min: 5, tier_max: 9, floor: 5}
+tools: [read_file]
+limits: {max_attempts: 3, max_cost_units: 2, timeout_s: 600}

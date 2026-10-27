@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: verifier
+version: 1
+role: Run tests and check results against the acceptance criteria (red, green and parent modes).
+runner: llm
+instructions_file: agents/verifier.md
+accepts: [verify]
+select: {tags_any: []}
+produces: [test-spec]
+may_edit_sections: []
+verdicts: [red-confirmed, red-rejected, pass, fail]
+input_schema: schemas/agent-input.json
+output_schema: schemas/verify-output.json
+model: {tier_min: 4, tier_max: 8, floor: 4}
+tools: [run_tests, diff, check_ac_coverage]
+limits: {max_attempts: 3, max_cost_units: 0, timeout_s: 600}
+notes: "Model agent (DR-006). check_ac_coverage is a deterministic tool: maps tests to ACs by name, counts skips, compares test-file hashes with the red check."

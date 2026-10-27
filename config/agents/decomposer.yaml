@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: decomposer
+version: 1
+role: Split an approved task into small, individually doable child tasks and prove AC coverage.
+runner: llm
+instructions_file: agents/decomposer.md
+accepts: [decompose]
+select: {tags_any: []}
+produces: [implement, decompose]
+may_edit_sections: []
+verdicts: [decomposed, cannot-split]
+input_schema: schemas/agent-input.json
+output_schema: schemas/decompose-output.json
+model: {tier_min: 4, tier_max: 9, floor: null}
+tools: [read_file, search_repo]
+limits: {max_attempts: 3, max_cost_units: 5, timeout_s: 600}
+notes: "Creates child tasks via new_tasks; never edits the parent's context file."

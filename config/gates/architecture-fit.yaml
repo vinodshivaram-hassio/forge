@@ -1,0 +1,19 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+gate: architecture-fit
+version: 1
+owner_agent: reviewer-architecture
+applies_to: [intake, decompose, implement]   # root tasks and tasks about to be split or built
+run_on: [full]
+pass_criteria:
+  - id: AF1
+    text: "Facts name the modules or files to be changed."
+  - id: AF2
+    text: "Any new dependency or module has a Decision with its reason."
+  - id: AF3
+    text: "Nothing contradicts conventions in artifacts tagged convention."
+cannot_assess_when: "No convention artifacts exist for the touched area."
+fail_output: "Cite each failing item id and the criterion id it breaks; state what would make it pass."
+severity: blocking
+examples:
+  good: [gates/architecture-fit/good/*.md]
+  bad: [gates/architecture-fit/bad/*.md]

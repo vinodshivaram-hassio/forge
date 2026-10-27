@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: intake
+version: 1
+role: Score complexity, tag modalities, and draft the context file for a root task.
+runner: llm
+instructions_file: agents/intake.md
+accepts: [intake]
+select: {tags_any: []}
+produces: [needs-human]
+may_edit_sections: [Original Input, Goal, Constraints, Acceptance Criteria, Out of Scope, Artifacts]
+verdicts: [drafted, invalid-input]
+input_schema: schemas/agent-input.json
+output_schema: schemas/intake-output.json
+model: {tier_min: 2, tier_max: 5, floor: null}
+tools: [read_file]
+limits: {max_attempts: 3, max_cost_units: 2, timeout_s: 600}
+notes: "Edits beyond Header and Artifacts apply only to the root draft (DR-004)."

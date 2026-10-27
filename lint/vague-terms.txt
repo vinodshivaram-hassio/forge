@@ -1,0 +1,32 @@
+# Lint list v1 (proposed 2026-10-27). One term per line, matched case-insensitively.
+# A term is flagged in Goal, Facts, Constraints or Acceptance Criteria unless a number
+# with a unit, a named standard or an explicit enumeration follows in the same clause.
+etc.
+and so on
+appropriate
+as needed
+as required
+fast
+quickly
+slow
+user-friendly
+intuitive
+easy
+simple
+robust
+scalable
+efficient
+reasonable
+sufficient
+minimal
+some
+several
+many
+few
+various
+and/or
+TBD
+TODO
+if possible
+ideally
+should be able to

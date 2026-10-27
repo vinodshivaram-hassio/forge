@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: implementer-backend
+version: 1
+role: Make the failing tests pass with the smallest change.
+runner: llm
+instructions_file: agents/implementer-backend.md
+accepts: [implement]
+select: {tags_any: [backend]}
+produces: []
+may_edit_sections: []
+verdicts: [implemented, stuck]
+input_schema: schemas/agent-input.json
+output_schema: schemas/implement-output.json
+model: {tier_min: 3, tier_max: 9, floor: null}
+tools: [read_file, search_repo, write_code, run_tests]
+limits: {max_attempts: 3, max_cost_units: 10, timeout_s: 600}
+notes: "write_code may not touch paths.tests."

@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: presenter
+version: 1
+role: Build the review package for the user.
+runner: llm
+instructions_file: agents/presenter.md
+accepts: [present]
+select: {tags_any: []}
+produces: []
+may_edit_sections: []
+verdicts: [packaged]
+input_schema: schemas/agent-input.json
+output_schema: schemas/present-output.json
+model: {tier_min: 2, tier_max: 5, floor: null}
+tools: [read_file]
+limits: {max_attempts: 3, max_cost_units: 2, timeout_s: 600}
+notes: "Writes its own result only."

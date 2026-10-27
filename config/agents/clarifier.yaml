@@ -1,0 +1,17 @@
+# Status: proposed (2026-10-27). Schema: docs/specs/agents-and-gates.md
+name: clarifier
+version: 1
+role: Verify that every fact in the context file is accurate and complete.
+runner: llm
+instructions_file: agents/clarifier.md
+accepts: [clarify]
+select: {tags_any: []}
+produces: [fetch, needs-human]
+may_edit_sections: [Facts, Constraints, Acceptance Criteria, Out of Scope, Open Questions, Clarifications, Review Flags]
+verdicts: [accurate, not-accurate]
+input_schema: schemas/agent-input.json
+output_schema: schemas/clarify-output.json
+model: {tier_min: 3, tier_max: 8, floor: null}
+tools: [read_file, search_repo]
+limits: {max_attempts: 3, max_cost_units: 5, timeout_s: 600}
+notes: "Constraints, Acceptance Criteria and Out of Scope: add and withdraw only (walkthrough B). Review Flags: resolve only."
